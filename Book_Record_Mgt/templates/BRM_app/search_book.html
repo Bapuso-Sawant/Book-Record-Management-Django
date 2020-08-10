@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Search Book Record</title>
+    <link rel="stylesheet" href="{% static 'css/brmstyle.css' %}">
+  </head>
+  <body>
+
+        <div id="header">
+            <h1>BOOK RECORD MANAGEMENT</h1>
+            <div id="nav">
+                <a href="/BRM_app/view-books">View All</a>
+                <a href="/BRM_app/new-book">Add New</a>
+                <a href="/BRM_app/search-book">Search</a>
+                <a href="/BRM_app/logout" id="logout">Logout</a>
+            </div>
+            <br><br><br><br>
+        </div>
+
+        <div id="main">
+           <h2 class="text">Search Book Record</h2>
+           <form action="BRM_app/search" method="post">
+              <div class="small_textbox">
+                {% csrf_token %}
+                {{form}}
+              </div>
+              <br><br>
+              <input type="submit" value="Search" class="btn">
+              <br><br><br>
+           </form>
+
+           {% if books %}     <!-- This code will run if user come on this page second time or many time but not at first time-->
+              <table>
+                <thead>
+                  <th>Book title</th>
+                  <th>Price</th>
+                  <th>Author</th>
+                  <th>Publisher</th>
+                </thead>
+           {% endif %}
+           {% for book in books %}
+                  <tr>
+                    <td>{{book.title}}</td>
+                    <td>{{book.price}}</td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.publisher}}</td>
+                  </tr>
+           {% endfor %}
+            </table>
+        </div>
+
+  </body>
+</html>

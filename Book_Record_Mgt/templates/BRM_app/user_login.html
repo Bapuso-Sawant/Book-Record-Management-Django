@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login BRMapp </title>
+    <link rel="stylesheet" href="{%static 'css/brmstyle.css'%}">
+  </head>
+  <body>
+
+    <div id="header">
+        <h1>BOOK RECORD MANAGEMENT</h1>
+        <div id="nav">
+            <a href="/BRM_app/view-books">View All</a>
+            <a href="/BRM_app/new-book">Add New</a>
+            <a href="/BRM_app/search-book">Search</a>
+        </div>
+        <br><br><br><br>
+    </div>
+
+    <div id="main">
+        <form method="post">
+            <h2 class="text">Login Here</h2>
+            {% csrf_token %}
+            <table>
+
+              <tr>
+                <td> <label for="username">Enter Username:</label></td>
+                <td> <div class="textbox"><input type="text" name="username" id="username" placeholder="Username"><div> </td>
+              </tr>
+              <br><br>
+              <tr>
+                <td> <label for="password">Enter Password:</label> </td>
+                <td> <div class="textbox"><input type="password" name="password" id="password" placeholder="Password"></div></td>
+              </tr>
+              <tr>
+                <td> </td>
+                <td> <input type="submit" value="Login" class="login_btn"> </td>
+              </tr>
+
+            </table>
+            <br><br><br>
+        </form>
+        <p id="error_in_login">{{ error }}</p>
+        <br><br><br><br><br>
+    </div>
+
+  </body>
+</html>

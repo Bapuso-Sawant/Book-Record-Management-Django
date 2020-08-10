@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Book Record</title>
+    <link rel="stylesheet" href="{%static 'css/brmstyle.css' %}">
+  </head>
+  <body>
+
+    <div id="header">
+        <h1>BOOK RECORD MANAGEMENT</h1>
+        <div id="nav">
+            <a href="/BRM_app/view-books">View All</a>
+            <a href="/BRM_app/new-book">Add New</a>
+            <a href="/BRM_app/search-book">Search</a>
+            <a href="/BRM_app/logout" id="logout">Logout</a>
+        </div>
+        <br><br><br><br>
+    </div>
+
+    <div id="main">
+        <h2 class="text">Edit Book Record</h2>
+        <form action="/BRM_app/edit" method='post'>
+              <div class="small_textbox">
+              <input type="hidden" name="bookid" value="{{book.id}}">
+               {% csrf_token %} <!-- CSRF(Cross-Site Request Forgery) is a token used for security purpose  -->
+               <!--{{form}}-->
+               Enter Title:{{form.title}}  <br><br><br>
+               Enter Price:{{form.price}}  <br><br><br>
+               Enter Author:{{form.author}} <br><br><br>
+               Enter Publisher:{{form.publisher}} <br><br><br><br>
+               </div>
+               <input type="submit" value="Save" class="btn">
+        </form>
+    </div>
+
+  </body>
+</html>
